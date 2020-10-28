@@ -1,0 +1,73 @@
+package com.itwill.dao;
+
+/*이름               널?       유형            
+---------------- -------- ------------- 
+DELI_NO          NOT NULL VARCHAR2(20)  
+DELI_PD_NO                VARCHAR2(20)  
+DELI_TP_NO                VARCHAR2(20)  
+DELI_ADDR                 VARCHAR2(100) 
+DELI_STAFF_PHONE          VARCHAR2(15)  
+DELI_STATUS               NUMBER        
+DELI_DATE                 VARCHAR2(13) */
+
+public class Delivery {
+	private String deliNo;
+	private String deliPdNo;//상품번호
+	private String deliTpNo;//운송업체 코드
+	private String deliAddr;
+	private int deliStatus;
+	private String delidate;
+	
+	public Delivery() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getDeliNo() {
+		return deliNo;
+	}
+
+	public void setDeliNo(String deliNo) {
+		this.deliNo = deliNo;
+	}
+
+	public String getDeliPdNo() {
+		return deliPdNo;
+	}
+
+	public void setDeliPdNo(String deliPdNo) {
+		this.deliPdNo = deliPdNo;
+	}
+
+	public String getDeliTpNo() {
+		return deliTpNo;
+	}
+
+	public void setDeliTpNo(String deliTpNo) {
+		this.deliTpNo = deliTpNo;
+	}
+
+	public String getDeliAddr() {
+		return deliAddr;
+	}
+
+	public void setDeliAddr(String deliAddr) {
+		this.deliAddr = deliAddr;
+	}
+
+	public int getDeliStatus() {
+		return deliStatus;
+	}
+
+	public void setDeliStatus(int deliStatus) {
+		this.deliStatus = deliStatus;
+	}
+
+	public String getDelidate() {
+		return delidate;
+	}
+
+	public void setDelidate(String delidate) {
+		this.delidate = delidate;
+	}
+	
+}

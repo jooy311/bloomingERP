@@ -1,0 +1,42 @@
+package com.itwill.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.itwill.dao.AuthorizationDAO;
+import com.itwill.dto.Authorization;
+
+@Service
+public class AuthorizationServiceImpl implements AuthorizationService {
+
+	@Autowired
+	private AuthorizationDAO authorizationDAO;
+	
+	@Override
+	public void insertAuthorization(Authorization authorization) {
+		authorizationDAO.insertAuthorization(authorization);		
+	}
+	
+	@Override
+	public void approvalAuthorization(Authorization authorization) {
+		authorizationDAO.approvalAuthorization(authorization);
+		
+	}
+	
+	@Override
+	public void deleteAuthorization(Authorization authorization) {
+		authorizationDAO.deleteAuthorization(authorization);		
+	}
+	
+	@Override
+	public Authorization selectAthorNo(String authNo) {
+		return authorizationDAO.selectAthorNo(authNo);
+	}
+	
+	@Override
+	public List<Authorization> getAuthList() {
+		return authorizationDAO.selectAthorList();
+	}
+}

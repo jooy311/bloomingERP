@@ -1,0 +1,15 @@
+package com.itwill.dao;
+
+
+import java.util.List;
+
+import com.itwill.dto.Authorization;
+
+
+public interface AuthorizationDAO {
+	int insertAuthorization(Authorization authorization);
+	int approvalAuthorization(Authorization authorization);
+	int deleteAuthorization(Authorization authorization);
+	Authorization selectAthorNo(String authNo);
+	List<Authorization> selectAthorList();
+}

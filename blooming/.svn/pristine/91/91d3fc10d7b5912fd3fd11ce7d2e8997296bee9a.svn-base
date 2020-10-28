@@ -1,0 +1,192 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<div class="container">
+<div class="block-header">
+
+<h2>거래처관리</h2>
+<hr>
+
+<div class="card">
+    <div class="card-header">
+    
+		<div role="tabpanel">
+			<ul class="tab-nav" role="tablist" tabindex="1" style="overflow: hidden; outline: none;">
+			      <li class="active"><a href="#clientList" aria-controls="clientList" role="tab" data-toggle="tab" aria-expanded="true">거래처 목록</a></li>
+			      <li class=""><a href="#clientUpload" aria-controls="clientUpload" role="tab" data-toggle="tab" aria-expanded="false">거래처 등록</a></li>
+			</ul>
+		</div>
+		
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="clientList">
+				
+				<%-- 
+				<div id = "data-table-basic-header" class = "bootgrid-header container-fluid">
+					<div class = "row">
+						<div class="col-sm-12 actionBar">
+							<div class="search form-group">
+								<div class="input-group">
+									<span class="md icon input-group-addon glyphicon-search"></span> 
+									<input type="text" class="search-field form-control" placeholder="Search">
+								</div>
+							</div>
+		
+							<div class="actions btn-group">
+								<div class="dropdown btn-group">
+									<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+										<span class="dropdown-text">10</span> 
+										<span class="caret"></span>
+									</button>
+									
+									<ul class="dropdown-menu pull-right" role="menu">
+										<li class="active" aria-selected="true"><a href="#10" class="dropdown-item dropdown-item-button">10</a></li>
+										<li aria-selected="false"><a href="#25" class="dropdown-item dropdown-item-button">25</a></li>
+										<li aria-selected="false"><a href="#50" class="dropdown-item dropdown-item-button">50</a></li>
+										<li aria-selected="false"><a href="#-1" class="dropdown-item dropdown-item-button">All</a></li>
+									</ul>
+								</div>
+						
+								<div class="dropdown btn-group">
+									<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+										<span class="dropdown-text"><span class="md icon md-view-module"></span></span> <span class="caret"></span>
+									</button>
+						
+									<ul class="dropdown-menu pull-right" role="menu">
+										<li>
+											<div class="checkbox"><label class="dropdown-item"><input name="id" type="checkbox" value="1" class="dropdown-item-checkbox" checked="checked"><i class="input-helper"></i></label></div>
+										</li>
+						
+										<li>
+											<div class="checkbox"><label class="dropdown-item"><input name="sender" type="checkbox" value="1" class="dropdown-item-checkbox" checked="checked"><i class="input-helper"></i></label></div>
+										</li>
+						
+										<li>
+											<div class="checkbox"><label class="dropdown-item"><input name="sender1" type="checkbox" value="1" class="dropdown-item-checkbox" checked="checked"><i class="input-helper"></i></label></div>
+										</li>
+						
+										<li>
+											<div class="checkbox"><label class="dropdown-item"><input name="sender2" type="checkbox" value="1" class="dropdown-item-checkbox" checked="checked"><i class="input-helper"></i></label></div>
+										</li>
+						
+										<li>
+											<div class="checkbox"><label class="dropdown-item"><input name="sender3" type="checkbox" value="1" class="dropdown-item-checkbox" checked="checked"><i class="input-helper"></i></label></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				--%>
+		
+				<div class="table-responsive">
+					<table id="data-table-basic" class="table table-striped" aria-busy="false">
+					    <thead>
+					        <tr>
+					            <th data-column-id="id" data-type="numeric">거래처번호</th>
+					            <th data-column-id="sender">업체명</th>
+					            <th data-column-id="sender1">업체연락처</th>
+					            <th data-column-id="sender2">담당관리자</th>
+					            <th data-column-id="sender3">업체지역</th>
+					        </tr>
+					    </thead>
+					    
+					    <tbody>
+					    	<tr>
+					    		<td>1000</td>
+					    		<td>홍길동의 천리꽃밭</td>
+					    		<td>010-1111-1111</td>
+					    		<td>홍길동</td>
+					    		<td>서울시</td>
+					    	</tr>
+					    	
+					    	<tr>
+					    		<td>2000</td>
+					    		<td>임꺽정의 든든꽃집</td>
+					    		<td>010-2222-2222</td>
+					    		<td>임꺽정</td>
+					    		<td>경기도</td>
+					    	</tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+			
+			<div role="tabpanel" class="tab-pane" id="clientUpload">
+				
+				<div class="container1">
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_name" class="label-pre">거래처명</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="거래처명을 입력해주세요">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_phone" class="label-pre">업체연락처</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="업체연락처을 입력해주세요">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_admin" class="label-pre">담당관리자</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="담당관리자을 입력해주세요">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_phone" class="label-pre">업체지역</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<div class="select">
+									<select class="form-control">
+										<option>서울시</option>
+										<option>경기도</option>
+										<option>강원도</option>
+										<option>경산도</option>
+										<option>전라도</option>
+										<option>충청도</option>
+										<option>인천시</option>
+										<option>대구시</option>
+										<option>대전시</option>
+										<option>광주시</option>
+										<option>울산시</option>
+										<option>부산시</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+					<button class="btn btn-primary waves-effect waves-button waves-float" style="float : right">등록</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>

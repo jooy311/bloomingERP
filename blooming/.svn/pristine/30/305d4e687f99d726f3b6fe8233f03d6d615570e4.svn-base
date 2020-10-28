@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwill.mapper.SalesMapper">
+
+<resultMap type="Notice" id="noticeResultMap">
+	<id column="not_no" property="notNo"/>
+	<result column="not_writer" property="notWriter"/>
+	<result column="not_date" property="notDate"/>
+	<result column="not_title" property="notTitle"/>
+	<result column="not_context" property="notContext"/>
+</resultMap>
+
+<!-- 공지사항 출력 -->
+<select id="selectNotice" resultMap="noticeResultMap">
+	select * from notice order by not_date
+</select>
+
+<!-- 
+	<insert id="insertReply" parameterType="MyReply">
+		<selectKey resultType="int" keyProperty="replyNo" order="BEFORE">
+			select myreply_seq.nextval from dual
+		</selectKey>
+		insert into myreply values(#{replyNo},#{replyId},#{replyContent},sysdate,#{replyCommentNo})
+	</insert>
+ -->
+ 
+<!--  이름          널?       유형           -->
+<!--NOT_NO      NOT NULL VARCHAR2(20)  -->
+<!--NOT_WRITER           VARCHAR2(50)  -->
+<!--NOT_DATE             VARCHAR2(30)  -->
+<!--NOT_TITLE            VARCHAR2(150) -->
+<!--NOT_CONTEXT          VARCHAR2(600)  --> 
+
+<!-- 공지사항 입력 -->
+<insert id="insertNotice" parameterType="Notice">
+	<selectKey resultType="int" keyProperty="not_no" order="BEFORE"> 
+		select not_no_seq.nextval from dual
+	</selectKey>
+	insert into notice values(#{not_no},#{not_writer},#{not_date},#{not_title},#{not_context})
+</insert>
+
+</mapper>

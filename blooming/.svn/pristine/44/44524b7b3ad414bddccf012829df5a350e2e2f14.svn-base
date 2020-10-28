@@ -1,0 +1,34 @@
+package com.itwill.dto;
+
+//입고 테이블과 상품 테이블을 조인하여 값을 뽑기 위해 만드는 dto
+public class Sales {
+   private Receipt receipt;
+   private Product product;
+   
+   public Sales() {
+      // TODO Auto-generated constructor stub
+   }
+
+   public Receipt getReceipt() {
+      return receipt;
+   }
+
+   public void setReceipt(Receipt receipt) {
+      this.receipt = receipt;
+   }
+
+   public Product getProduct() {
+      return product;
+   }
+
+   public void setProduct(Product product) {
+      this.product = product;
+   }
+
+   public Sales(Receipt receipt, Product product) {
+      super();
+      this.receipt = receipt;
+      this.product = product;
+   }
+   
+}

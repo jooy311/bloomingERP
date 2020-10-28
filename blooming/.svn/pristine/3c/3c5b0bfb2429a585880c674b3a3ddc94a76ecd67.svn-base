@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.mapper.SalesMapper">
+<!-- parameterType 속성 생략 가능 -->
+
+<!-- 
+*조인조건*
+pd_pdn_no 상품테이블의 생산번호
+rcp_pdn_no 입고테이블의 생산번호
+pdn_no 생산테이블의 생산번호
+ -->
+<!--  
+<resultMap type="Sales" id="salesResultMap">
+	입고 테이블
+	<association property="rcp" javaType="Receipt"> 입고테이블
+		<id column="rcp_no" property="rcpNo"/>
+		<result column="rcp_price" property="rcpPrice"/> 입고가격(원가)
+		<result column="rcp_date" property="rcpDate"/>	입고날짜
+		<result column="rcp_pdn_no" property="rcpPdnNo"/> 조인조건 : 생산번호
+	</association>
+	
+	상품 테이블
+	<association property="pd" javaType="Product">상품테이블
+		<id column="pd_no" property="pdNo"/> 
+		<result column="pd_price" property="pdPrice"/> 상품가격(가격)
+		<result column="pd_cnt" property="pdCnt"/> 상품갯수
+		<result column="pd_pdn_no" property="pdPdnNo"/> 조인조건 : 생산번호
+	</association>
+	
+	생산 테이블
+	<association property="pdn" javaType="Production">
+		<id column="pdn_no" property="pdnNo"/> 조인조건 : 생산번호
+		<result column="pdn_product" property="pdnProduct"/> 상품이름
+	</association>
+</resultMap>
+
+
+<select id="selectOrderList" parameterType="Order" resultMap="order2resultMap">
+		select order_no, mem_name, order_product, order_cnt, order_date from ordermain inner join member on order_member_no = mem_no order by order_no
+</select>
+
+ 
+ 
+ select pd_no, pcg_name, pdn_product, pd_cnt, pd_price from product inner join pcategory on pd_pcg_no = pcg_no inner join production on pd_pdn_no = pdn_no
+ 
+<select id="selectSalesList" resultMap="salesResultMap">
+	select rcp_date, pdn_product, pd_cnt, rcp_price, pd_price from Production inner join
+</select> -->
+	
+</mapper>

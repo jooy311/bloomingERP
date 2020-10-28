@@ -1,0 +1,52 @@
+package com.itwill.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.itwill.dao.EmployeeDAO;
+import com.itwill.dto.Employee;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+
+	@Autowired
+	private EmployeeDAO employeeDAO;
+	
+	@Transactional
+	@Override
+	public void insertEmployee(Employee employee) {
+		employeeDAO.insertEmployee(employee);		
+	}
+	
+	@Override
+	public List<Employee> getEmployeeList() {
+		return employeeDAO.selectEmployeeList();
+	}
+	
+	@Override
+	public Employee getEmployeeNo(String empNo) {
+		return employeeDAO.selectEmployeeNo(empNo);
+	}
+	
+	@Transactional
+	@Override
+	public void updateEmployee(Employee employee) {
+		employeeDAO.updateEmployee(employee);		
+	}
+	
+	@Transactional
+	@Override
+	public void deleteEmployee(Employee employee) {
+		employeeDAO.deleteEmployee(employee); 		
+	}
+	
+	@Override
+	public List<Employee> getInsertSalaryList() {
+		return employeeDAO.insertSalaryList();
+	}
+	
+
+}

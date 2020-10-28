@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.mapper.OrderMapper">
+	<!-- parameterType 속성 생략 가능 -->
+	<!-- <insert id="insertStudent">
+		insert into student values(#{no},#{name},#{phone},#{address},#{birthday})
+	</insert> -->
+	
+	<resultMap type="Order" id="orderResultMap">
+		<id column="order_no" property="orderNo"/>
+		<result column="order_member_no" property="orderMemberNo"/>
+		<result column="order_status" property="orderStatus"/>
+		<result column="order_cnt" property="orderCnt"/>
+		<result column="order_date" property="orderDate"/>
+		<result column="order_product" property="orderProduct"/>
+	</resultMap>
+	
+	<select id="selectOrderList" parameterType="Order" resultMap="orderResultMap">
+		select * from ordermain order by order_no
+	</select>
+	
+	<select id="selectOrderNoList" parameterType="string" resultMap="orderResultMap">
+		select * from ordermain where order_no=#{orderNo}
+	</select>
+
+ 	<select id="selectOrderPersonList" parameterType="string" resultMap="orderResultMap">
+		select * from ordermain where order_member_no =#{orderMemberNo}
+	</select>
+	
+	<select id="selectOrderProductNameList" parameterType="string" resultMap="orderResultMap">
+		select * from ordermain where order_product=#{productName}
+	</select>
+
+	<select id="selectOrderDateList" parameterType="string" resultMap="orderResultMap">
+		select * from ordermain where order_date=#{orderDate} 
+	</select>
+	
+	<!-- <resultMap type="MyCommentUser2" id="myCommentUser2ResultMap">
+		association : 1:1 관계의 테이블 조인 검색행의 컬럼값을
+		포함 관계의 인스턴스의 필드값으로 매핑 설정하기 위한 엘리먼트
+		property 속성 : 포함 인스턴스가 저장된 필드명을 속성값으로 설정
+		javaType 속성 : 포함 인스턴스가 저장될 필드의 클래스를 속성값으로 설정
+		<association property="comment" javaType="MyComment1">
+			<id column="comment_no" property="commentNo"/>
+			<result column="comment_id" property="commentId"/>
+			<result column="comment_content" property="commentContent"/>
+			<result column="comment_date" property="commentDate"/>
+		</association>	
+		<association property="user" javaType="MyUser">
+			<id column="user_id" property="userId"/>
+			<result column="user_name" property="userName"/>
+		</association>
+	</resultMap> -->
+		
+	<!-- <select id="selectDynamicOrderList" parameterType="Order2" resultMap="myHewonResultMap">
+		select * from ordermain 
+		<if test="id!=null and id!=''">
+			 where order_no=#{orderNo}
+		</if>
+		<if test="name!=null and name!=''">
+			where hewon_name=#{name}
+		</if>
+		order by hewon_id
+	</select> 	 -->
+</mapper>

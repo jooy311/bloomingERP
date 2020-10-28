@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.mapper.AuthorizationMapper">
+	<!-- parameterType 속성 생략 가능 -->
+	<!-- <insert id="insertStudent">
+		insert into student values(#{no},#{name},#{phone},#{address},#{birthday})
+	</insert> -->
+	
+	
+	<insert id="insertAuthorization">
+		insert into authorization values ((select (nvl(max(auth_no), 100000) + 1) auth_no from authorization), #{authEmpNo}, #{authCase}, #{authContent}, #{authWhile}, '0', sysdate, '0', null, null, #{authSubject}) 
+	</insert>
+	
+	<resultMap type="Authorization" id="AuthorizationResultMap">
+		<id column="auth_no" property="authNo"/>
+		<result column="auth_emp_no" property="authEmpNo"/>
+		<result column="auth_case" property="authCase"/>
+		<result column="auth_content" property="authContent"/>
+		<result column="auth_while" property="authWhile"/>
+		<result column="auth_yn" property="authYn"/>
+		<result column="autn_reqdate" property="authReqdate"/>
+		<result column="auth_delete" property="authDelete"/>
+		<result column="auth_deldate" property="authDeldate"/>
+		<result column="auth_file" property="authFile"/>
+		<result column="auth_subject" property="authSubject"/>					
+	</resultMap>
+	
+</mapper>

@@ -1,0 +1,280 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<div class="container">
+<div class="block-header">
+
+<h2>발주관리</h2>
+<hr>
+
+
+<div class="card">
+    <div class="card-header">
+    
+		<div role="tabpanel">
+			<ul class="tab-nav" role="tablist" tabindex="1" style="overflow: hidden; outline: none;">
+			      <li class="active"><a href="#placerorderList" aria-controls="placerorderList" role="tab" data-toggle="tab" aria-expanded="true">발주 목록</a></li>
+			      <li class=""><a href="#placerorderdata" aria-controls="placerorderdata" role="tab" data-toggle="tab" aria-expanded="false">발주 확인 목록</a></li>
+			      <li class=""><a href="#placerorderUpload" aria-controls="placerorderUpload" role="tab" data-toggle="tab" aria-expanded="false">발주 등록</a></li>
+			</ul>
+		</div>
+		
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="placerorderList">
+				
+				<div class="row">
+					<div class="row">
+						<div class="col-25">
+							<label for="clt_name" class="label-pre">발주상품</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="발주상품으로 검색가능합니다">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_phone" class="label-pre">발주날짜</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="발주날짜로 검색가능합니다">
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="table-responsive">
+					<table id="data-table-basic" class="table table-striped" aria-busy="false">
+					    <thead>
+					        <tr>
+					            <th data-column-id="id" data-type="numeric">발주번호</th>
+					            <th data-column-id="sender">주문번호</th>
+					            <th data-column-id="sender1">사원번호</th>
+					            <th data-column-id="sender2">거래처번호</th>
+					            <th data-column-id="sender3">발주상품</th>
+					            <th data-column-id="sender4">발주수량</th>
+					            <th data-column-id="sender5">발주단가</th>
+					            <th data-column-id="sender6">발주날짜</th>
+					            <th data-column-id="sender7">발주상태</th>
+					            <th data-column-id="sender8">결제처리여부</th>
+					        </tr>
+					    </thead>
+					    
+					    <tbody>
+					    	<tr>
+					    		<td>1000</td>
+					    		<td>홍길동의 천리꽃밭</td>
+					    		<td>010-1111-1111</td>
+					    		<td>홍길동</td>
+					    		<td>서울시</td>
+					    		<td>1000</td>
+					    		<td>홍길동의 천리꽃밭</td>
+					    		<td>010-1111-1111</td>
+					    		<td>홍길동</td>
+					    		<td>서울시</td>
+					    	</tr>
+					    	
+					    	<tr>
+					    		<td>2000</td>
+					    		<td>임꺽정의 든든꽃집</td>
+					    		<td>010-2222-2222</td>
+					    		<td>임꺽정</td>
+					    		<td>경기도</td>
+					    		<td>2000</td>
+					    		<td>임꺽정의 든든꽃집</td>
+					    		<td>010-2222-2222</td>
+					    		<td>임꺽정</td>
+					    		<td>경기도</td>
+					    	</tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+			
+			<div role="tabpanel" class="tab-pane" id="placerorderdata">
+			
+				<div class="table-responsive">
+					<table id="data-table-command" class="table table-striped table-vmiddle" aria-busy="false">
+					    <thead>
+					        <tr>
+					            <th data-column-id="id" data-type="numeric">발주번호</th>
+					            <th data-column-id="sender">주문번호</th>
+					            <th data-column-id="sender1">사원번호</th>
+					            <th data-column-id="sender2">거래처번호</th>
+					            <th data-column-id="sender3">발주상품</th>
+					            <th data-column-id="sender4">발주수량</th>
+					            <th data-column-id="sender5">발주단가</th>
+					            <th data-column-id="sender6">발주날짜</th>
+					            <th data-column-id="sender7">발주상태</th>
+					            <th data-column-id="sender8">결제처리여부</th>
+					            <th data-column-id="commands" data-formatter="commands" data-sortable="false">수정</th>
+					        </tr>
+					    </thead>
+					    
+					    <tbody>
+					    	<tr>
+					    		<td>1000</td>
+					    		<td>홍길동의 천리꽃밭</td>
+					    		<td>010-1111-1111</td>
+					    		<td>홍길동</td>
+					    		<td>서울시</td>
+					    		<td>1000</td>
+					    		<td>홍길동의 천리꽃밭</td>
+					    		<td>010-1111-1111</td>
+					    		<td>홍길동</td>
+					    		<td>서울시</td>
+					    		<td>
+					    			<button type="button" class="btn btn-icon command-edit" data-row-id="1000"><span class="md md-edit"></span></button>
+									<button type="button" class="btn btn-icon command-delete" data-row-id="1000"><span class="md md-delete"></span></button>
+					    		</td>
+					    	</tr>
+					    	
+					    	<tr>
+					    		<td>2000</td>
+					    		<td>임꺽정의 든든꽃집</td>
+					    		<td>010-2222-2222</td>
+					    		<td>임꺽정</td>
+					    		<td>경기도</td>
+					    		<td>2000</td>
+					    		<td>임꺽정의 든든꽃집</td>
+					    		<td>010-2222-2222</td>
+					    		<td>임꺽정</td>
+					    		<td>경기도</td>
+					    		<td>
+					    			<button type="button" class="btn btn-icon command-edit" data-row-id="2000"><span class="md md-edit"></span></button>
+									<button type="button" class="btn btn-icon command-delete" data-row-id="2000"><span class="md md-delete"></span></button>
+					    		</td>
+					    	</tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+			
+			<div role="tabpanel" class="tab-pane" id="placerorderUpload">
+				
+				<div class="container1">
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_name" class="label-pre">발주번호</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="발주번호를 입력해주세요">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_phone" class="label-pre">주문번호</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="주문번호를 입력해주세요">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_admin" class="label-pre">사원번호</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="사원번호를 입력해주세요">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_admin" class="label-pre">거래처코드</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="거래처코드를 입력해주세요">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_admin" class="label-pre">발주상품</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="발주상품을 입력해주세요">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_admin" class="label-pre">발주수량</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="발주수량을 입력해주세요">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="clt_admin" class="label-pre">발주단가</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="발주단가를 입력해주세요">
+							</div>
+						</div>
+					</div>
+				
+				
+					<button class="btn btn-primary waves-effect waves-button waves-float" style="float : right">등록</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$("#data-table-basic").bootgrid();
+		$("#data-table-command").bootgrid({
+			formatters: {
+                "commands": function(column, row) {
+                    return "<button type=\"button\" class=\"btn btn-icon command-edit\" data-row-id=\"" + row.id + "\"><span class=\"md md-edit\"></span></button> " + 
+                        "<button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.id + "\"><span class=\"md md-delete\"></span></button>";
+                }
+            }
+		});
+	});
+	
+</script>

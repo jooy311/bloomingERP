@@ -1,0 +1,55 @@
+package com.itwill.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.itwill.dto.Product;
+import com.itwill.service.ProductService;
+
+@Controller
+public class ProductController {
+	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
+	
+	@Autowired
+	private ProductService productService;
+	
+	//회원목록을 JSON 텍스트 데이타로 응답하는 요청 처리 메소드
+	@RequestMapping(value="/json_list", method=RequestMethod.GET)
+	@ResponseBody
+	public List<Product> productListJSON(Model model) {
+		model.addAttribute("product",productService.getProductList());
+		logger.info("ddddddddddddddddddd");
+		return productService.getProductList();
+	}
+	
+	@RequestMapping(value="/json_product", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> productListJSON2(@RequestParam Map<String,Object> map, @ModelAttribute Product product,Model model) {
+		map.put("product", productService.getDynamicProductList(product));
+		model.addAttribute("product",productService.getDynamicProductList(product));
+		
+		return map;
+	}
+	
+	
+	//매개변수를 Map을 선언하면 모든 입력값을 Map 객체의 엔트리로 제공받아 사용 가능
+	//Map 객체를 반환하면 jackson-databind 기능을 이용하여 JSON 타입의 문자열로 응답
+	// => JavaBean(DTO) 클래스가 없는 경우 Map 객체를 이용하여 응답 처리
+	/*
+	 * @RequestMapping(value = "/productList", method = RequestMethod.POST)
+	 * 
+	 * @ResponseBody public Product input(@ModelAttribute Product product) { return
+	 * product; }
+	 */
+}

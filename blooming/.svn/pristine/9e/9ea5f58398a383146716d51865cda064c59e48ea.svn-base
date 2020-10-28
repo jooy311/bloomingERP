@@ -1,0 +1,97 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+
+<div class="container">
+	<div class="block-header">
+
+                                   
+                     
+    
+                
+                
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>휴가 신청서<small> member modify</small></h2>
+                        </div>
+                        
+                        <div class="card-body card-padding">
+                            <form role="form">
+                            
+                            <!-- 옵션 선택 문 주석 -->
+                                   <div class="form-group">
+                                        <div class="fg-line">
+                                            <div class="select">
+                                                         <label for="exampleInputPassword1">휴가종류</label>
+                                                <select class="form-control">
+                                                	<option>휴가 종류를 선택해주세요</option>
+                                                    <option>연차</option>
+                                                    <option>반차</option>
+                                                    <option>병가</option>
+                                                    <option>공가</option>                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 일반 인서트 문 시작 -->
+                                    
+                                    
+                                <div class="form-group fg-line">
+                             	<label for="exampleInputEmail1">휴가 시작일</label>
+                                    
+                                    <div class="input-group form-group">
+                                        <span class="input-group-addon"><i class="md md-event"></i></span>
+                                        <div class="dtp-container dropdown fg-line">
+                                            <input type='email' class="form-control date-picker" data-toggle="dropdown" placeholder="Click here...">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                 <div class="form-group fg-line">
+                             	<label for="exampleInputEmail1">휴가 종료일</label>
+                                    
+                                    <div class="input-group form-group">
+                                        <span class="input-group-addon"><i class="md md-event"></i></span>
+                                        <div class="dtp-container dropdown fg-line">
+                                            <input type='email' class="form-control date-picker" data-toggle="dropdown" placeholder="Click here...">
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                <div class="form-group fg-line">
+                                    <label for="exampleInputEmail1">소속</label>
+                                    <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="ex) 인사팀">
+                                </div>
+                                
+                                <div class="form-group fg-line">
+                                    <label for="exampleInputPassword1">직급</label>
+                                    <input type="text" class="form-control input-sm" id="exampleInputPassword1" placeholder="ex) 대리">
+                                </div>
+                                
+                                 <div class="form-group fg-line">
+                                    <label for="exampleInputPassword1">이름</label>
+                                    <input type="text" class="form-control input-sm" id="exampleInputPassword1" placeholder="ex) 홍길동">
+                                </div>
+                                
+                                 <div class="form-group fg-line">
+                                    <label for="exampleInputPassword1">사유</label>
+                                    <input type="text" class="form-control input-sm" id="exampleInputPassword1" placeholder="ex) 여름휴가">
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary btn-sm m-t-10">cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm m-t-10">reset</button>
+                                <button type="submit" class="btn btn-primary btn-sm m-t-10">submit</button>
+                                          
+                            </form>
+                        </div>
+                    </div>
+                    
+            
+</div>
+</div>
+
+                        
+                    
+	
+
+	

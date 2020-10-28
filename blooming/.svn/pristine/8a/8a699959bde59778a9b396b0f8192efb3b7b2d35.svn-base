@@ -1,0 +1,136 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+
+<div class="container">
+	<div class="block-header">
+
+
+
+
+
+
+		<div class="card">
+			<div class="card-header">
+				<h2>
+					결재 요청서<small> Authorization</small>
+				</h2>
+			</div>
+
+			<div class="card-body card-padding">
+				<form  name="insertForm">
+
+				
+					
+					<div class="form-group fg-line">
+						<label for="exampleInputEmail1">결재구분</label> <input type="text"
+							class="form-control input-sm" name="authCase" id="authCase" value="발주요청서" readonly="readonly"
+							>
+					</div>
+
+
+					<div class="form-group fg-line">
+						<label for="exampleInputEmail1">사원번호</label> <input type="text"
+							class="form-control input-sm" name="authEmpNo" id="authEmpNo" value="20201001" readonly="readonly"
+							>
+					</div>
+					
+
+					<div class="form-group fg-line">
+						<label for="exampleInputPassword1">제목</label> 
+					
+						<input type="text"
+							class="form-control input-sm" name="authSubject" id="authSubject"
+							placeholder="ex) 여름휴가 신청서">
+					</div>
+
+					<div class="form-group fg-line">
+						<label for="exampleInputPassword1">내용</label> <input type="text"
+							class="form-control input-sm" name="authContent" id="authContent"
+							placeholder="ex) 여름휴가 3일을 신청합니다.">
+					</div>
+
+					<div class="form-group fg-line">
+						<label for="exampleInputPassword1">소요시간</label> <input type="number"
+							class="form-control input-sm" name="authWhile" id="authWhile"
+							placeholder="결재구분 휴가일 때 기입하시오 . ex) 1일  : 8">
+					</div>
+					
+
+					<button type="submit" class="btn btn-primary btn-sm m-t-10">cancel</button>
+					<button type="button" class="btn btn-primary btn-sm m-t-10"
+						onclick="submitCheck();">submit</button>
+
+				</form>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			//insertForm.no.focus();
+
+			function submitCheck() {
+				/*
+				if (studentForm.no.value == "") {
+					alert("학생번호를 입력해 주세요.");
+					studentForm.no.focus();
+					return;
+				}
+				
+				var noReg = /\d{4}/g;
+				if (!noReg.test(studentForm.no.value)) {
+					alert("학생번호는 정수 4자리로 입력해주세요.");
+					studentForm.no.focus();
+					return;
+				}
+				
+				if (studentForm.name.value == "") {
+					alert("이름을 입력해 주세요.");
+					studentForm.name.focus();
+					return;
+				}
+				
+				if (studentForm.phone.value == "") {
+					alert("전화번호을 입력해 주세요.");
+					studentForm.phone.focus();
+					return;
+				}
+				
+				var phoneReg = /(01[016789])-\d{3,4}-\d{4}/g;
+				if (!phoneReg.test(studentForm.phone.value)) {
+					alert("전화번호를 형식에 맞게 입력해주세요.");
+					studentForm.phone.focus();
+					return;
+				}
+				
+				if (studentForm.address.value == "") {
+					alert("주소를 입력해 주세요.");
+					studentForm.address.focus();
+					return;
+				}
+				
+				if (studentForm.birthday.value == "") {
+					alert("생년월일을 입력해 주세요.");
+					studentForm.birthday.focus();
+					return;
+				}
+				
+				var birthdayReg = /(18|19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])/g;
+				if (!birthdayReg.test(studentForm.birthday.value)) {
+					alert("생년월일을 형식에 맞게 입력해주세요.");
+					studentForm.birthday.focus();
+					return;
+				}*/
+
+				insertForm.method = "POST";
+				insertForm.action = "${pageContext.request.contextPath}/insertAuth";
+				insertForm.submit();
+			}
+		</script>
+
+	</div>
+</div>
+
+
+
+
+

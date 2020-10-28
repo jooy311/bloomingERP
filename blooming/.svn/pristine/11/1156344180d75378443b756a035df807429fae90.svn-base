@@ -1,0 +1,10 @@
+package com.itwill.mapper;
+
+
+import java.util.List;
+
+import com.itwill.dto.Authorization;
+
+public interface AuthorizationMapper {
+	int insertAuthorization(Authorization authorization);
+}

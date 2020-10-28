@@ -1,0 +1,7 @@
+package com.itwill.service;
+
+import com.itwill.dto.Authorization;
+
+public interface AuthorizationService {
+	void insertAuthorization(Authorization authorization);
+}

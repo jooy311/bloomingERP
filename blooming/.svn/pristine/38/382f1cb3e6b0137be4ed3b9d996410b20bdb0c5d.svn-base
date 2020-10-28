@@ -1,0 +1,83 @@
+package com.itwill.controller;
+
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.itwill.dto.Employee;
+import com.itwill.service.EmployeeService;
+
+
+@Controller
+//@SessionAttributes("Employee")
+public class EmployeeController {
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+	
+		
+	@Autowired
+	private EmployeeService employeeService;
+		
+	@RequestMapping(value = "/insertEmp", method = RequestMethod.GET)
+	public String insertEmp() {
+		return "humanresource/insertEmployee";
+	}
+	
+	//@RequestMapping(value = "/student/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertEmp", method = RequestMethod.POST)
+	public String insertEmp(@ModelAttribute Employee employee, Model model) {
+		try {
+			employeeService.insertEmployee(employee);
+		} catch (Exception e) {
+			return "humanresource/insertEmployee";
+		}
+		return "redirect:/employeeList";
+	}
+	
+	@RequestMapping(value="/employeeList", method = RequestMethod.GET)
+	public String display(Model model) {
+		model.addAttribute("employeeList", employeeService.getEmployeeList());
+		return "humanresource/employeeList";
+	}
+	
+
+
+	@RequestMapping(value = "/viewEmployee", method = RequestMethod.GET)
+	public String viewEmployee(Model model, HttpServletRequest request ) {
+		String empNo=request.getParameter("empNo");
+		Employee result = employeeService.getEmployeeNo(empNo);
+		System.out.println(result.getEmpNo());
+		System.out.println(result.getEmpName());
+		model.addAttribute("viewEmployee", employeeService.getEmployeeNo(empNo));
+		return "humanresource/viewEmployee";
+	}
+	
+		
+/*
+ 
+ * @RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
+		return "session/login_form";
+	}
+ 	//아이디를 전달받아 회원정보를 검색하여 뷰페이지에 제공하는 요청 처리 메소드
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(@ModelAttribute Hewon hewon, Model model, HttpSession session) {
+		if(!hewon.getId().equals("abc123") || !hewon.getPasswd().equals("123456")) {
+			model.addAttribute("message", "아이디 또는 비밀번호가 맞지 않습니다.");
+			return "session/login_form";
+		}
+		
+		session.setAttribute("loginId", hewon.getId());
+		
+		return "session/login_result";
+	}
+ */
+
+}

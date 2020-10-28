@@ -1,0 +1,9 @@
+package com.itwill.dao;
+
+import java.util.List;
+
+import com.itwill.dto.Salary;
+
+public interface SalaryDAO {
+	List<Salary> selectSalList();
+}

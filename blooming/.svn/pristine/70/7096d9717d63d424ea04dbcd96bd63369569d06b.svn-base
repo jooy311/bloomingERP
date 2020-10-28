@@ -1,0 +1,43 @@
+package com.itwill.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.itwill.dto.Login;
+import com.itwill.dto.Member;
+import com.itwill.mapper.LoginMapper;
+
+@Repository
+public class LoginDAOImpl implements LoginDAO{
+
+	
+	@Autowired
+	private SqlSession sqlSession;
+
+	@Override
+	public Login loginUser(Login login) {
+		// TODO Auto-generated method stub
+		Login result=null;
+		
+		LoginMapper mapper=sqlSession.getMapper(LoginMapper.class);
+		
+		try {
+			result=mapper.loginUser(login);
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return result;
+		}
+		return result;
+	
+	}
+
+
+
+	
+
+}

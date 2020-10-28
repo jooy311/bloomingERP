@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.mapper.ProductMapper">
+	<!-- parameterType 속성 생략 가능 -->
+	<insert id="insertStudent">
+		insert into product values(#{no},#{name},#{phone},#{address},#{birthday})
+	</insert>
+	
+	<resultMap type="Product" id="productResultMap">
+		<id column="pd_no" property="pdNo"/>
+		<result column="pd_pdn_no" property="pdPdnNo"/>
+		<result column="PD_PCG_NO" property="pdPcgNo"/>
+		<result column="PD_CNT" property="pdCnt"/>
+		<result column="PD_PRICE" property="pdPrice"/>
+		
+		<association property="pcg" javaType="ProductCategory">
+			<id column="pcg_no" property="pcgNo"/>
+			<result column="pcg_name" property="pcgName"/>		
+		</association>
+		
+		<association property="pdn" javaType="Production">
+			<id column="pdn_no" property="pdnNo"/>
+			<result column="pdn_product" property="pdnProduct"/>
+
+		</association>
+	</resultMap>
+	
+	<select id="selectProductList" parameterType="Product" resultMap="productResultMap">
+		select * from product inner join pcategory on pd_pcg_no = pcg_no inner join production on pd_pdn_no = pdn_no
+	</select>
+	
+	<select id="selectDynamicProductList" parameterType="Product" resultMap="productResultMap">
+		select pd_no, pcg_name, pdn_product, pd_cnt, pd_price from product inner join pcategory on pd_pcg_no = pcg_no inner join production on pd_pdn_no = pdn_no
+		<where>
+			<if test="pdNo!=null and pdNo!=''">
+				pd_no like '%'||#{pdNo}||'%'
+			</if>
+			
+			
+		</where>
+		order by pd_no
+	</select>
+</mapper>

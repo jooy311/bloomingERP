@@ -1,0 +1,28 @@
+package com.itwill.dto;
+
+public class Login {
+	private String logId;
+	private String logPw;
+	
+	public Login() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public String getLogId() {
+		return logId;
+	}
+	public void setLogId(String logId) {
+		this.logId = logId;
+	}
+	public String getLogPw() {
+		return logPw;
+	}
+	public void setLogPw(String logPw) {
+		this.logPw = logPw;
+	}
+	
+	
+	
+	
+
+}

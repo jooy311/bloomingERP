@@ -1,0 +1,11 @@
+package com.itwill.mapper;
+
+import java.util.List;
+
+import com.itwill.dto.Product;
+
+public interface ProductMapper {
+	//전체 목록 검색
+	List<Product> selectProductList();
+
+}

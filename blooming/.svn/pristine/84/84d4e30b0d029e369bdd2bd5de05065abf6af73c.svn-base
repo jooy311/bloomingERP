@@ -1,0 +1,77 @@
+package com.itwill.controller;
+
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.itwill.dto.Employee;
+import com.itwill.service.EmployeeService;
+
+
+@Controller
+@SessionAttributes("Employee")
+public class EmployeeController {
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+		
+	@Autowired
+	private EmployeeService employeeService;
+		
+	@RequestMapping(value = "/insertEmp", method = RequestMethod.GET)
+	public String insertEmp() {
+		return "humanresource/insertEmployee";
+	}
+	
+	//@RequestMapping(value = "/student/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertEmp", method = RequestMethod.POST)
+	public String insertEmp(@ModelAttribute Employee employee, Model model) {
+		try {
+			employeeService.insertEmployee(employee);
+		} catch (Exception e) {
+			return "humanresource/insertEmployee";
+		}
+		return "redirect:/employeeList";
+	}
+	
+	@RequestMapping(value="/employeeList", method = RequestMethod.GET)
+	public String display(Model model) {
+		model.addAttribute("employeeList", employeeService.getEmployeeList());
+		return "humanresource/employeeList";
+	}
+	/*
+	@RequestMapping("/updateEmployee")
+	public String display1(HttpServletRequest request) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("utf-8");
+		String empNo=request.getParameter("empNo");
+		request.setAttribute(empNo, "empNo");
+		return "/updateEmployee";
+	}
+	*/
+		
+	
+	/*
+	@RequestMapping(value = "/orderList", method = RequestMethod.POST)
+	public String display(@ModelAttribute Order order, Model model) {
+		//model.addAttribute("orderNo", order.getOrderNo());
+		logger.info("orderlist 메소드 호출");
+		System.out.println("========================" + order.getOrderNo());
+		
+		model.addAttribute("orderList",orderService.getOrderNoList(order.getOrderNo()));		 
+		//model.addAttribute("orderList",orderService.getOrderPersonList(order.get);		 
+		model.addAttribute("orderList",orderService.getOrderProductNameList(order.getOrderProduct()));		 
+		model.addAttribute("orderList",orderService.getOrderDateList(order.getOrderDate()));		 
+		return "operation/orderList"; 
+	}
+	*/
+}

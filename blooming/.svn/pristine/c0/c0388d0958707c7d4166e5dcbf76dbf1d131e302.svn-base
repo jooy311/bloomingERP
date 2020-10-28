@@ -1,0 +1,22 @@
+package com.itwill.dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.itwill.dto.Authorization;
+import com.itwill.mapper.AuthorizationMapper;
+
+@Repository
+public class AuthorizationDAOImpl implements AuthorizationDAO {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	@Override
+	public int insertAuthorization(Authorization authorization) {
+		return sqlSession.getMapper(AuthorizationMapper.class).insertAuthorization(authorization);
+	}
+	
+	
+}

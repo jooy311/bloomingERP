@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.mapper.TransportMapper">
+	<!-- <insert id="insertStudent">
+		insert into student values(#{no},#{name},#{phone},#{address},#{birthday})
+	</insert> -->
+	<resultMap type="Transport" id="transportResultMap">
+		<id column="tp_no" property="tpNo"/>
+		<result column="tp_name" property="tpName"/>
+		<result column="tp_phone" property="tpPhone"/>		
+	</resultMap>
+	
+	<select id="selectTransprotList" parameterType="Transport" resultMap="transportResultMap">
+		select * from transport order by tp_no desc
+	</select>
+
+	<select id="selectDynamicTransprotList" parameterType="Transport" resultMap="transportResultMap">
+		select * from transport 
+		<where>
+			<if test="tpNo!=null and tpNo!=''">
+				and tp_no like '%'||#{tpNo}||'%'
+			</if>
+			<if test="tpName!=null and tpName!=''">
+				and tp_name = #{tpName}
+			</if>
+		</where>
+		order by tp_no desc
+	</select>
+		
+</mapper>

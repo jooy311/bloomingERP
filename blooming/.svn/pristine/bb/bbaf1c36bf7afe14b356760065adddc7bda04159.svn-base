@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.mapper.EmployeeMapper">
+	<!-- parameterType 속성 생략 가능 -->
+	<!-- <insert id="insertStudent">
+		insert into student values(#{no},#{name},#{phone},#{address},#{birthday})
+	</insert> -->
+	
+	
+	<insert id="insertEmployee">
+		insert into Employee values ((select (nvl(max(emp_no), 20201000) + 1) emp_no from employee), #{empName}, #{empRegino}, #{empEmail}, #{empPhone}, #{empAddr}, #{empBirth}, #{empSdate}, null, #{empAccount}, #{empDepart}, #{empGrade}, null, '0', #{empSchool}, #{empMajor}, #{empPasswd}) 
+	</insert>
+	
+	
+	<resultMap type="Employee" id="EmployeeResultMap">
+		<id column="emp_no" property="empNo"/>
+		<result column="emp_name" property="empName"/>
+		<result column="emp_regino" property="empRegino"/>
+		<result column="emp_email" property="empEmail"/>
+		<result column="emp_phone" property="empPhone"/>
+		<result column="emp_addr" property="empAddr"/>
+		<result column="emp_birth" property="empBirth"/>
+		<result column="emp_sdate" property="empSdate"/>
+		<result column="emp_edate" property="empEdate"/>
+		<result column="emp_account" property="empAccount"/>
+		<result column="emp_depart" property="empDepart"/>
+		<result column="emp_grade" property="empGrade"/>
+		<result column="emp_photo" property="empPhoto"/>
+		<result column="emp_end" property="empEnd"/>
+		<result column="emp_passwd" property="empPasswd"/>
+	</resultMap>
+	
+	<select id="selectEmployeeList" resultMap="EmployeeResultMap">
+		select emp_no, emp_name, emp_regino, emp_depart, emp_grade, emp_sdate, emp_account, emp_email from employee order by emp_grade
+	</select>
+</mapper>

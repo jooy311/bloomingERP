@@ -1,0 +1,101 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<div class="container">
+<div class="block-header">
+
+<h2>입고관리</h2>
+<hr>
+
+<div class="card">
+    <div class="card-header">
+    
+    	<div role="tabpanel">
+			<ul class="tab-nav" role="tablist" tabindex="1" style="overflow: hidden; outline: none;">
+			      <li class="active"><a href="#receiptList" aria-controls="receiptList" role="tab" data-toggle="tab" aria-expanded="true">입고 목록</a></li>
+			      <li class=""><a href="#receiptUpload" aria-controls="receiptUpload" role="tab" data-toggle="tab" aria-expanded="false">입고 등록</a></li>
+			</ul>
+		</div>
+		
+		
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="receiptList">
+				
+				<div class="row">
+					<div class="row">
+						<div class="col-25">
+							<label for="rcp_name" class="label-pre">입고상품명</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="입고상품명으로 검색가능합니다">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="rcp_date" class="label-pre">입고일짜</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="입고일짜로 검색가능합니다">
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+					
+						<div class="col-25">
+							<label for="status_date" class="label-pre">입고상태</label>
+						</div>
+	
+						<div class="col-75">
+							<div class="fg-line form-group">
+								<input type="text" class="form-control input-sm" placeholder="입고상태로 검색가능합니다">
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="table-responsive">
+					<table id="data-table-basic" class="table table-striped" aria-busy="false">
+					    <thead>
+					        <tr>
+					            <th data-column-id="id" data-type="numeric">입고번호</th>
+					            <th data-column-id="sender">생산번호</th>
+					            <th data-column-id="sender1">업체연락처</th>
+					            <th data-column-id="sender2">담당관리자</th>
+					            <th data-column-id="sender3">업체지역</th>
+					        </tr>
+					    </thead>
+					    
+					    <tbody>
+					    
+					    	<tr>
+					    		<td>1000</td>
+					    		<td>홍길동의 천리꽃밭</td>
+					    		<td>010-1111-1111</td>
+					    		<td>홍길동</td>
+					    		<td>서울시</td>
+					    	</tr>
+					    	
+					    	<tr>
+					    		<td>2000</td>
+					    		<td>임꺽정의 든든꽃집</td>
+					    		<td>010-2222-2222</td>
+					    		<td>임꺽정</td>
+					    		<td>경기도</td>
+					    	</tr>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>

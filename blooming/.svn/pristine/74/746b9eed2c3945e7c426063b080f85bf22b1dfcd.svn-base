@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.mapper.ProductMapper">
+	<!-- parameterType 속성 생략 가능 -->
+	<!-- <insert id="insertStudent">
+		insert into student values(#{no},#{name},#{phone},#{address},#{birthday})
+	</insert> -->
+	
+	<resultMap type="Product" id="productResultMap">
+		<id column="pd_no" property="pdNo"/>
+		<result column="pd_pdn_no" property="pdPdnNo"/>
+		<result column="PD_PCG_NO" property="pdPcgNo"/>
+		<result column="PD_CNT" property="pdCnt"/>
+		<result column="PD_PRICE" property="pdPrice"/>
+		
+		<association property="pcg" javaType="ProductCategory">
+			<id column="pcg_no" property="pcgNo"/>
+			<result column="pcg_name" property="pcgName"/>		
+		</association>
+		
+		<association property="pd" javaType="Production">
+			<id column="pdn_no" property="pdnNo"/>
+			<result column="pdn_product" property="pdnProduct"/>
+
+		</association>
+	</resultMap>
+	
+	<select id="selectProductList" parameterType="Product" resultMap="productResultMap">
+		select * from product inner join pcategory on pd_pcg_no = pcg_no inner join
+	</select>
+	
+<!--  
+	<select id="selectOrderList" parameterType="Order" resultMap="order2resultMap">
+		select order_no, mem_name, order_product, order_cnt, order_date from ordermain inner join member on order_member_no = mem_no order by order_no
+	</select>
+		
+	<select id="selectDynamicOrderList" parameterType="Order" resultMap="order2resultMap">
+		select order_no, mem_name, order_product, order_cnt, order_date from ordermain inner join member on order_member_no = mem_no
+		<where>
+			<if test="orderNo!=null and orderNo!=''">
+				order_no like '%'||#{orderNo}||'%'
+			</if>
+			<if test="member.memName!=null and member.memName!=''">
+				and mem_name like '%'||#{member.memName}||'%'
+			</if>
+			<if test="orderProduct!=null and orderProduct!=''">
+				and order_product like '%'||#{orderProduct}||'%'
+			</if>
+			<if test="orderDate!=null and orderDate!=''">
+				and order_date like '%'||#{orderDate}||'%'
+			</if>
+		</where>
+		order by order_no
+	</select>  -->
+</mapper>

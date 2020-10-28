@@ -1,0 +1,156 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+
+<div class="sidebar-inner">
+   <div class="si-inner">
+      <div class="profile-menu">
+         <a href="">
+            <div class="profile-pic">
+               <img src="img/profile-pics/1.jpg" alt="">
+            </div>
+
+            <div class="profile-info">
+               이블루밍 <i class="md md-arrow-drop-down"></i>
+            </div>
+         </a>
+
+         <ul class="main-menu">
+            <li><a href="#"><i class="md md-person"></i> 내 프로필 보기</a></li>
+            <li><a href="#"><i class="md md-settings-input-antenna"></i>
+                  개인정보 설정</a></li>
+
+            <li><a href="#"><i class="md md-history"></i> 로그아웃</a></li>
+         </ul>
+      </div>
+
+      <ul class="main-menu">
+         <li class="active"><a
+            href="${pageContext.request.contextPath }/"><i
+               class="md md-home"></i> 메인</a></li>
+
+         <li><a href="${pageContext.request.contextPath }/memberList">
+               <i class="md md-format-underline"></i> 고객관리
+         </a></li>
+
+         <li class="sub-menu"><a href=""><i class="md md-now-widgets"></i>
+               인사관리</a>
+
+            <ul>
+
+               <!-- class="active"쓰면 hover아니고 검정으로 살아있음 -->
+               <li><a href="${pageContext.request.contextPath }/salaryDetail">급여관리</a></li>
+               <li><a
+                  href="${pageContext.request.contextPath }/insertEmployee">사원정보입력</a></li>
+               <li><a href="${pageContext.request.contextPath }/attitudeList">근태관리
+                     리스트</a></li>
+               <li><a href="${pageContext.request.contextPath }/employeeList">사원
+                     리스트</a></li>
+               <li><a href="${pageContext.request.contextPath }/salaryList">급여
+                     관리 리스트</a></li>
+               <li><a
+                  href="${pageContext.request.contextPath }/salarydetailList">급여
+                     상세 리스트</a></li>
+            </ul></li>
+
+         <li class="sub-menu"><a href=""><i class="md md-view-list"></i>
+               매출관리</a>
+            <ul>
+               <li><a href="${pageContext.request.contextPath }/daySales">일별매출</a></li>
+            </ul>
+            <ul>
+               <li><a href="tables.html">매출분석</a></li>
+            </ul></li>
+
+         <li class="sub-menu"><a href=""><i class="md md-view-list"></i>
+               생산관리</a>
+            <ul>
+               <li><a href="tables.html">생산현황</a></li>
+            </ul></li>
+
+         <li class="sub-menu"><a href=""><i
+               class="md md-my-library-books"></i> 상품관리</a>
+            <ul>
+               <li><a href="#">입고</a></li>
+               <li><a href="#">출고</a></li>
+               <li><a href="#">재고</a></li>
+               <!-- <li><a href="#">상품관리</a></li> -->
+            </ul></li>
+
+         <li class="sub-menu"><a href=""><i class="md md-swap-calls"></i>거래관리</a>
+            <ul>
+               <li><a href="${pageContext.request.contextPath}/placeorder">발주관리</a></li>
+               <li><a href="${pageContext.request.contextPath}/client">거래처관리(목록)</a></li>
+            </ul></li>
+
+         <li class="sub-menu"><a href=""><i class="md md-trending-up"></i>운영관리</a>
+            <ul>
+               <li><a
+                  href="${pageContext.request.contextPath }/transportationList">운송업체</a></li>
+               <li><a href="${pageContext.request.contextPath }/productList">상품관리</a></li>
+               <li><a href="${pageContext.request.contextPath }/deliveryList">배송관리</a></li>
+               <li><a href="${pageContext.request.contextPath }/orderList">주문관리</a></li>
+            </ul></li>
+
+         <li class="sub-menu"><a href=""><i class="md md-trending-up"></i>전자결제</a>
+            <ul>
+               <li><a
+                  href="${pageContext.request.contextPath }/insertVacation">휴가신청</a></li>
+
+            </ul></li>
+      </ul>
+   </div>
+</div>
+svn 충돌
+
+                    <ul>
+                        <!-- class="active"쓰면 hover아니고 검정으로 살아있음 -->
+                        <li><a href="${pageContext.request.contextPath }/salaryDetail">급여관리</a></li>
+                        <li><a href="${pageContext.request.contextPath }/insertEmployee">사원정보입력</a></li>
+                        <li><a href="${pageContext.request.contextPath }/attitudeList">근태관리 리스트</a></li>
+                        <li><a href="${pageContext.request.contextPath }/employeeList">사원 리스트</a></li>
+                        <li><a href="${pageContext.request.contextPath }/salaryList">급여 관리 리스트</a></li>
+                        <li><a href="${pageContext.request.contextPath }/salarydetailList">급여 상세 리스트</a></li>
+                    </ul>
+                
+                <li class="sub-menu">
+                    <a href=""><i class="md md-view-list"></i> 생산관리</a>
+                    <ul>
+                        <li><a href="tables.html">생산현황</a></li>
+                    </ul>
+                </li>
+                
+                <li class="sub-menu">
+                    <a href=""><i class="md md-my-library-books"></i> 상품관리</a>
+                    <ul>
+                        <li><a href="#">입고</a></li>
+                        <li><a href="#">출고</a></li>
+                        <li><a href="#">재고</a></li>
+                        <!-- <li><a href="#">상품관리</a></li> -->
+                    </ul>
+                </li>
+                
+                <li class="sub-menu">
+                    <a href=""><i class="md md-swap-calls"></i>거래관리</a>
+                    <ul>
+                        <li><a href="${pageContext.request.contextPath}/placeorder">발주관리</a></li>
+                        <li><a href="${pageContext.request.contextPath}/client">거래처관리(목록)</a></li>
+                    </ul>
+                </li>
+                
+                <li class="sub-menu">
+                    <a href=""><i class="md md-trending-up"></i>운영관리</a>
+                    <ul>
+                        <li><a href="${pageContext.request.contextPath }/transportationList">운송업체</a></li>
+                        <li><a href="${pageContext.request.contextPath }/productList">상품관리</a></li>
+                        <li><a href="${pageContext.request.contextPath }/deliveryList">배송관리</a></li>
+                        <li><a href="${pageContext.request.contextPath }/orderList">주문관리</a></li>
+                    </ul>
+                </li>
+                
+                <li class="sub-menu">
+                    <a href=""><i class="md md-trending-up"></i>전자결제</a>
+                    <ul>
+                        <li><a href="${pageContext.request.contextPath }/insertVacation">휴가신청</a></li>
+                    </ul>
+                </li>
+            </ul>

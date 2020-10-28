@@ -1,0 +1,11 @@
+package com.itwill.dao;
+
+import java.util.List;
+
+import com.itwill.dto.Employee;
+
+public interface EmployeeDAO {
+	int insertEmployee(Employee employee);
+	List<Employee> selectEmployeeList();
+	Employee selectEmployeeNo(String empNo);
+}

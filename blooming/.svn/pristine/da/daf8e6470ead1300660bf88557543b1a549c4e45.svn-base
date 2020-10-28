@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwill.mapper.ClientMapper">
+<!-- 
+	<resultMap type="Client" id="clientResultMap">
+		
+		<id column="clt_no" property="cltNo"/>
+		<result column="clt_name" property="cltName"/>
+		<result column="clt_phone" property="cltPhone"/>
+		<result column="clt_admin" property="cltAdmin"/>
+		<result column="clt_location" property="cltLocation"/>
+		<result column="client_status" property="cltStatus"/>
+	</resultMap>
+-->	
+	<select id="selectClientList" resultType="Client">
+		<!-- select clt_no, clt_name, clt_phone, clt_admin, clt_location from client order by clt_no desc -->
+		select clt_no, clt_name, clt_phone, clt_admin, clt_location from client where clt_status = 0 order by clt_no desc
+	</select>
+	
+	<insert id="insertClient">
+		<!-- insert into client values ((select nvl(max(clt_no)+1,0) from client), #{clt_name}, #{clt_phone}, #{clt_admin}, #{clt_location}, 0) -->
+		insert into client values ((select nvl(max(clt_no)+1,0) from client), #{cltName}, #{cltPhone}, #{cltAdmin}, #{cltLocation}, 0)
+	</insert>
+</mapper>

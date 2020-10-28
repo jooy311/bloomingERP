@@ -1,0 +1,9 @@
+package com.itwill.mapper;
+
+import java.util.List;
+
+import com.itwill.dto.Order;
+
+public interface OrderMapper {
+	List<Order> selectOrderList();
+}

@@ -1,0 +1,11 @@
+package com.itwill.dao;
+
+import java.util.List;
+
+import com.itwill.dto.Login;
+import com.itwill.dto.Member;
+
+public interface LoginDAO {
+	public Login loginUser(Login login);
+
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.mapper.SalesMapper">
+<!-- parameterType 속성 생략 가능 -->
+<resultMap type="Sales" id="salesResultMap">
+   
+   <association property="rel" javaType="Relout"> <!-- 출고테이블 -->
+      <id column="rel_no" property="relNo"/>
+      <result column="rel_date" property="relDate"/> <!-- 출고날짜 -->
+      <result column="rel_cnt" property="relCnt"/> <!-- 출고갯수 -->
+      <result column="rel_price" property="relPrice"/> <!-- 출고원자재가격 -->
+   </association>
+   
+   <association property="pd" javaType="Product"><!-- 상품테이블 -->
+      <id column="pd_no" property="pdNo"/> 
+      <result column="pd_price" property="pdPrice"/> <!-- 상품가격(가격) -->
+      <result column="pd_cnt" property="pdCnt"/> <!-- 상품갯수 -->
+      <result column="pd_pdn_no" property="pdPdnNo"/> <!-- 조인조건 : 생산번호 -->
+   </association>
+
+   <association property="pdn" javaType="Production"> <!-- 생산 테이블 -->
+      <id column="pdn_no" property="pdnNo"/>  <!-- 조인조건 : 생산번호 -->
+      <result column="pdn_product" property="pdnProduct"/>  <!-- 상품이름 -->
+   </association>
+   
+</resultMap>
+
+<!-- 
+*조인조건*
+생산테이블의 출고코드 = 출고 테이블의 출고코드
+( pdn_rel_no = rel_no )
+
+생산테이블의 생산번호 = 상품 테이블의 생산번호
+( pdn_no = pd_pdn_no )
+ -->
+
+<!-- 기간검색 -->
+<!--<select id="selectTermList" resultMap="salesResultMap">
+   select 
+   rel_date, pdn_product, pd_cnt, rel_price, rel_cnt, pd_price
+   from Production inner join Product on pdn_no = pd_pdn_no inner join Relout on pdn_rel_no = rel_no
+   where rel_date between to_char(#{relout.relDate},'yyyy-MM-dd') and to_char(#{relout.relDate},'yyyy-MM-dd')
+   order by rel_date;
+</select>-->
+
+<!-- 전체검색 -->
+<select id="selectSalesList" resultMap="salesResultMap">
+   select 
+   rel_date, pdn_product, pd_cnt, rel_price, rel_cnt, pd_price
+   from Production inner join Product on pdn_no = pd_pdn_no inner join Relout on pdn_rel_no = rel_no
+   order by rel_date;
+</select> 
+
+<!-- 주간매출 -->
+<select id="selectWeekList" resultMap="salesResultMap">
+   select 
+   rel_date, pdn_product, pd_cnt, rel_price, rel_cnt, pd_price
+   from Production inner join Product on pdn_no = pd_pdn_no inner join Relout on pdn_rel_no = rel_no
+   where rel_date between to_char(sysdate-3,'yyyy-MM-dd') and to_char(sysdate+4,'yyyy-MM-dd')
+   order by rel_date;
+</select>
+
+<!-- 월간매출 -->
+<select id="selectMonthList" resultMap="salesResultMap">
+   select 
+   rel_date, pdn_product, pd_cnt, rel_price, rel_cnt, pd_price
+   from Production inner join Product on pdn_no = pd_pdn_no inner join Relout on pdn_rel_no = rel_no
+   where rel_date IN (SELECT TRUNC (SYSDATE, 'MM') + LEV - 1 AS THIS_MONTH FROM 
+   (SELECT LEVEL AS LEV FROM DUAL
+   <![CDATA[CONNECT BY LEVEL <= TO_CHAR (LAST_DAY (SYSDATE), 'DD')]]>));
+</select>
+
+<!--
+<select id="selectMonthList" resultMap="salesResultMap">
+   select rel_date,pdn_product, pd_cnt,
+   rel_price*rel_cnt as product_price,
+   pd_price*pd_cnt as sales_price,
+   (pd_price*pd_cnt)-(rel_price*rel_cnt) as pure_price
+   from Production inner join Product on pdn_no = pd_pdn_no inner join Relout on pdn_rel_no = rel_no
+   where rel_date IN (SELECT TRUNC (SYSDATE, 'MM') + LEV - 1 AS THIS_MONTH FROM 
+   (SELECT LEVEL AS LEV FROM DUAL
+   <![CDATA[CONNECT BY LEVEL <= TO_CHAR (LAST_DAY (SYSDATE), 'DD')]]>));
+</select>
+-->
+
+</mapper>

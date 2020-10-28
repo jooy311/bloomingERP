@@ -1,0 +1,10 @@
+package com.itwill.service;
+
+import java.util.List;
+
+import com.itwill.dto.Delivery;
+
+public interface DeliveryService {
+	//전체 검색
+	List<Delivery> getDeliveryList();
+}

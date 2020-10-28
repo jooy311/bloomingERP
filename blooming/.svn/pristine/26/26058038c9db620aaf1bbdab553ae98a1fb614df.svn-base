@@ -1,0 +1,49 @@
+package com.itwill.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.itwill.dto.Delivery;
+import com.itwill.service.DeliveryService;
+
+
+@Controller
+public class DeliveryController {
+	
+	@Autowired
+	private DeliveryService deliveryService;
+	
+	@RequestMapping(value="/deliveryList", method = RequestMethod.GET)
+	public String delivery(Model model) {
+		
+			model.addAttribute("deliveryList", deliveryService.getDeliveryList());
+		
+		return "operation/deliveryList";
+	}
+	
+	@RequestMapping(value="/delivery_search", method = RequestMethod.GET)
+	public String delivery_search(@ModelAttribute Delivery delivery , Model model) {
+		//System.out.println("µé¿Íµû!!!!!!!!!!!!!!!");
+		if(delivery.getDeliDate()!=null || !delivery.getDeliDate().equals("")) {
+			delivery.setDeliDate(delivery.getDeliDate().replace('-', '/'));
+		}
+		model.addAttribute("deliveryList", deliveryService.getDynamicProductList(delivery));
+		return "operation/deliveryList";
+	}
+	
+	/*
+	 * && (delivery.getTransport().getTpName()==null ||
+	 * delivery.getTransport().getTpName()) && delivery.getDeliArea()==null ||
+	 * delivery.getd
+	 */
+	/*
+	 * @RequestMapping(value="/deliveryList", method = RequestMethod.GET) public
+	 * String delivery_search(@ModelAttribute Delivery delivery, Model model) {
+	 * model.addAttribute("deliveryList", deliveryService.getDeliveryList()); return
+	 * "operation/deliveryList"; }
+	 */
+}

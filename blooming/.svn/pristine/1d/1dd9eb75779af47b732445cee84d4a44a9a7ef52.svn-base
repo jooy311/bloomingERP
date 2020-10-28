@@ -1,0 +1,70 @@
+package com.itwill.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.itwill.dto.Attitude;
+import com.itwill.dto.Authorization;
+import com.itwill.dto.Employee;
+import com.itwill.service.AttitudeService;
+
+@Controller
+public class AttitudeController {
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+	
+	
+	@Autowired
+	private AttitudeService attitudeService;
+	
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	public String insertAttitude() {
+		return "/";
+	}
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	public String insertAttitude(@ModelAttribute Attitude attitude, Model model) {
+	
+			attitudeService.insertAttitude(attitude);
+	
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String updateAttitude() {
+		return "/";
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updateAttitude(@ModelAttribute Attitude attitude, Model model) {		
+
+			attitudeService.updateAttitude(attitude);
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/insertSalary", method = RequestMethod.GET)
+	public String viewAttitude(@RequestParam(value = "empNo", required = false)String empNo, Model model) {
+		model.addAttribute("attitude", attitudeService.selectAttdNo(empNo));
+		model.addAttribute("empNo", empNo);
+		return "humanresource/insertSalary";
+	}
+	
+	@RequestMapping(value="/attitudeList", method = RequestMethod.GET)
+	public String attitudeList(Model model) {
+		model.addAttribute("attitudeList", attitudeService.getAttdList());
+		return "humanresource/attitudeList";
+	}
+	@RequestMapping(value="/attitude_search",method=RequestMethod.GET)
+	public String appr_search(@ModelAttribute Attitude attitude,Model model) {
+		model.addAttribute("attitudeList", attitudeService.getDaynamicAttdList(attitude));
+		return "humanresource/attitudeList";
+	}
+	
+	
+}

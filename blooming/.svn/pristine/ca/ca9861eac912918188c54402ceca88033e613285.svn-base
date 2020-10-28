@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.mapper.DeliveryMapper">
+	
+	<resultMap type="Delivery" id="deliveryResultMap">
+		<id column="DELI_NO" property="deliNo"/>
+		<result column="DELI_PD_NO" property="deliPdNo"/>
+		<result column="DELI_TP_NO" property="deliTpNo"/>
+		<result column="DELI_ADDR" property="deliAddr"/>
+		<result column="DELI_STATUS" property="deliStatus"/>
+		<result column="DELI_DATE" property="deliDate"/>
+		
+		<association property="product" javaType="Product">
+			<id column="pd_no" property="pdNo"/>
+			<result column="pd_name" property="pdName"/>		
+		</association>
+		
+		<association property="transport" javaType="Transport">
+			<id column="tp_no" property="tpNo"/>
+			<result column="tp_name" property="tpName"/>
+		</association>
+			
+		<association property="production" javaType="Production">
+			<id column="pdn_no" property="pdnNo"/>
+			<result column="pdn_product" property="pdnProduct"/>
+		</association>
+
+	</resultMap>
+	
+	<select id="selectDeliveryList" parameterType="Delivery" resultMap="deliveryResultMap">
+		select deli_no, tp_name,pdn_product,deli_addr,deli_status,deli_date from delivery inner join transport on tp_no = deli_tp_no
+		inner join product on product.pd_no = deli_pd_no inner join production on pdn_no = pd_pdn_no
+	</select>
+	
+	<!-- <select id="selectDynamicProductList" parameterType="Product" resultMap="deliveryResultMap">
+		select pd_no, pcg_name, pdn_product, pd_cnt, pd_price from product inner join pcategory on pd_pcg_no = pcg_no inner join production on pd_pdn_no = pdn_no
+		<where>
+			<if test="pdNo!=null and pdNo!=''">
+				pd_no like '%'||#{pdNo}||'%'
+			</if>
+			
+			
+		</where>
+		order by pd_no
+	</select> -->
+</mapper>

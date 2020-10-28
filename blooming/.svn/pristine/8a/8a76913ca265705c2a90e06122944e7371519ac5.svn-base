@@ -1,0 +1,9 @@
+package com.itwill.dao;
+
+
+import com.itwill.dto.Authorization;
+
+
+public interface AuthorizationDAO {
+	int insertAuthorization(Authorization authorization);
+}
