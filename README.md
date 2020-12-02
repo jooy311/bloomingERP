@@ -1,6 +1,6 @@
 # bloomingERP
 # 1) 프로젝트 소개
-[erp 프로세스]
+### [erp 프로세스]
 1)	사용자가 주문을 하게 되면 주문목록에 주문이 들어가게 됩니다.
 2)	주문목록에 있는 상품이 발주테이블에 들어가게 됩니다.
 3)	거래처를 선택해주어 발주를 완료하게 되면 생산테이블로 들어가게 됩니다.
@@ -17,5 +17,5 @@
 # 2) 맡은 역할 : 상품/주문/배송/운송업체관리/데이터베이스설계
 ![image](https://user-images.githubusercontent.com/60565941/97485866-08513900-199e-11eb-9c2b-5007c2a96074.png)
 # 3) ERD관계도
-https://www.erdcloud.com/d/AF4gvQFMQky9eejdc
+## 관계도 사이트 : https://www.erdcloud.com/d/AF4gvQFMQky9eejdc
 ![image](https://user-images.githubusercontent.com/60565941/97485882-10a97400-199e-11eb-8376-7c52cc494374.png)
